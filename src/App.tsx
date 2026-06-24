@@ -4,7 +4,6 @@ import { setYear, startOfYear, format } from "date-fns";
 import { ru } from "date-fns/locale";
 
 function App() {
-
   const [time, setTime] = useState(new Date());
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -14,41 +13,38 @@ function App() {
   });
 
   // Функция для склонения слова "день"
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const getDayWord = (days: any) => {
+  const getDayWord = (days: number) => {
     const lastDigit = days % 10;
     const lastTwoDigits = days % 100;
-    
-    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) return 'дней';
-    if (lastDigit === 1) return 'день';
-    if (lastDigit >= 2 && lastDigit <= 4) return 'дня';
-    return 'дней';
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) return "дней";
+    if (lastDigit === 1) return "день";
+    if (lastDigit >= 2 && lastDigit <= 4) return "дня";
+    return "дней";
   };
 
-   // Функция для склонения других слов
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const getHourWord = (hours: any) => {
+  // Функция для склонения других слов
+  const getHourWord = (hours: number) => {
     const lastDigit = hours % 10;
     const lastTwoDigits = hours % 100;
-    
-    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) return 'часов';
-    if (lastDigit === 1) return 'час';
-    if (lastDigit >= 2 && lastDigit <= 4) return 'часа';
-    return 'часов';
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) return "часов";
+    if (lastDigit === 1) return "час";
+    if (lastDigit >= 2 && lastDigit <= 4) return "часа";
+    return "часов";
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const getMinuteWord = (minutes: any) => {
+  const getMinuteWord = (minutes: number) => {
     const lastDigit = minutes % 10;
     const lastTwoDigits = minutes % 100;
-    
-    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) return 'минут';
-    if (lastDigit === 1) return 'минута';
-    if (lastDigit >= 2 && lastDigit <= 4) return 'минуты';
-    return 'минут';
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 19) return "минут";
+    if (lastDigit === 1) return "минута";
+    if (lastDigit >= 2 && lastDigit <= 4) return "минуты";
+    return "минут";
   };
-  
-  // Вывод времени //////////////////////////
+
+  // Вывод времени
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -58,9 +54,6 @@ function App() {
   }, []);
 
   const ShowTime = format(time, "HH:mm:ss", { locale: ru });
-
-  //////////////////////////////////////////
-
 
   // Вывод времени до нового года
 
@@ -85,7 +78,7 @@ function App() {
       }
 
       const totalSeconds = Math.floor(
-        (nextNewYear.getTime() - now.getTime()) / 1000
+        (nextNewYear.getTime() - now.getTime()) / 1000,
       );
 
       if (totalSeconds <= 0) {
@@ -113,19 +106,18 @@ function App() {
       <div>
         <h1>До нового года осталось!</h1>
         <div>
-          <span>{timeLeft.days}</span>{' '}
-          <span>{getDayWord(timeLeft.days)}</span>
+          <span>{timeLeft.days}</span> <span>{getDayWord(timeLeft.days)}</span>
         </div>
         <div>
-          <span>{timeLeft.hours.toString().padStart(2, "0")}</span>{' '}
+          <span>{timeLeft.hours.toString().padStart(2, "0")}</span>{" "}
           <span>{getHourWord(timeLeft.hours)}</span>
         </div>
         <div>
-          <span>{timeLeft.minutes.toString().padStart(2, "0")}</span>{' '}
+          <span>{timeLeft.minutes.toString().padStart(2, "0")}</span>{" "}
           <span>{getMinuteWord(timeLeft.minutes)}</span>
         </div>
         <div>
-          <span>{timeLeft.seconds.toString().padStart(2, "0")}</span>{' '}
+          <span>{timeLeft.seconds.toString().padStart(2, "0")}</span>{" "}
           <span>секунд</span>
         </div>
       </div>
