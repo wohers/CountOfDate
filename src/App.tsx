@@ -12,7 +12,6 @@ function App() {
     seconds: 0,
   });
 
-  // Функция для склонения слова "день"
   const getDayWord = (days: number) => {
     const lastDigit = days % 10;
     const lastTwoDigits = days % 100;
@@ -23,7 +22,6 @@ function App() {
     return "дней";
   };
 
-  // Функция для склонения других слов
   const getHourWord = (hours: number) => {
     const lastDigit = hours % 10;
     const lastTwoDigits = hours % 100;
@@ -44,8 +42,6 @@ function App() {
     return "минут";
   };
 
-  // Вывод времени
-
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(new Date());
@@ -53,24 +49,13 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const ShowTime = format(time, "HH:mm:ss", { locale: ru });
-
-  // Вывод времени до нового года
+  const showTime = format(time, "HH:mm:ss", { locale: ru });
 
   useEffect(() => {
     const updateCountdown = () => {
       const now = new Date();
       const currentYear = now.getFullYear();
-
-      let nextNewYear;
-
-      if (now.getMonth() === 11 && now.getDate() === 31) {
-        nextNewYear = setYear(startOfYear(now), currentYear + 1);
-      } else if (now.getMonth() === 11) {
-        nextNewYear = setYear(startOfYear(now), currentYear + 1);
-      } else {
-        nextNewYear = setYear(startOfYear(now), currentYear + 1);
-      }
+      const nextNewYear = setYear(startOfYear(now), currentYear + 1);
 
       if (now.getMonth() === 0 && now.getDate() === 1) {
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
@@ -95,34 +80,55 @@ function App() {
     };
 
     updateCountdown();
-
     const intervalId = setInterval(updateCountdown, 1000);
-
     return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <>
-      <div>
-        <h1>До нового года осталось!</h1>
-        <div>
-          <span>{timeLeft.days}</span> <span>{getDayWord(timeLeft.days)}</span>
-        </div>
-        <div>
-          <span>{timeLeft.hours.toString().padStart(2, "0")}</span>{" "}
-          <span>{getHourWord(timeLeft.hours)}</span>
-        </div>
-        <div>
-          <span>{timeLeft.minutes.toString().padStart(2, "0")}</span>{" "}
-          <span>{getMinuteWord(timeLeft.minutes)}</span>
-        </div>
-        <div>
-          <span>{timeLeft.seconds.toString().padStart(2, "0")}</span>{" "}
-          <span>секунд</span>
-        </div>
+    <main className="app">
+      <div className="app__content">
+        <header className="app__header">
+          <h1 className="app__title">До нового года осталось!</h1>
+          <p className="app__subtitle">Обратный отсчёт точно до полуночи.</p>
+        </header>
+
+        <section className="countdown-card">
+          <div className="countdown-grid">
+            <article className="time-block">
+              <div className="time-value">{timeLeft.days}</div>
+              <div className="time-label">{getDayWord(timeLeft.days)}</div>
+            </article>
+
+            <article className="time-block">
+              <div className="time-value">
+                {timeLeft.hours.toString().padStart(2, "0")}
+              </div>
+              <div className="time-label">{getHourWord(timeLeft.hours)}</div>
+            </article>
+
+            <article className="time-block">
+              <div className="time-value">
+                {timeLeft.minutes.toString().padStart(2, "0")}
+              </div>
+              <div className="time-label">
+                {getMinuteWord(timeLeft.minutes)}
+              </div>
+            </article>
+
+            <article className="time-block">
+              <div className="time-value">
+                {timeLeft.seconds.toString().padStart(2, "0")}
+              </div>
+              <div className="time-label">секунд</div>
+            </article>
+          </div>
+
+          <p className="current-time">
+            Текущее время: <span>{showTime}</span>
+          </p>
+        </section>
       </div>
-      <h1>{ShowTime}</h1>
-    </>
+    </main>
   );
 }
 

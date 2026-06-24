@@ -1,42 +1,116 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background:
+    radial-gradient(circle at top, rgba(81, 101, 255, 0.22), transparent 35%),
+    radial-gradient(
+      circle at bottom right,
+      rgba(0, 255, 198, 0.14),
+      transparent 22%
+    ),
+    linear-gradient(180deg, #09101f 0%, #121a2f 100%);
+}
+
+.app__content {
+  width: min(100%, 980px);
+}
+
+.app__header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.app__title {
+  margin: 0;
+  font-size: clamp(36px, 4.5vw, 56px);
+  letter-spacing: -0.04em;
+  color: #f3f8ff;
+  text-shadow: 0 16px 35px rgba(1, 17, 41, 0.35);
+}
+
+.app__subtitle {
+  margin: 0 0 0 0;
+  color: #a4bddf;
+  font-size: 16px;
+  max-width: 540px;
+}
+
+.countdown-card {
+  display: grid;
+  gap: 24px;
+  padding: 32px;
+  border-radius: 32px;
+  background: rgba(10, 18, 37, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px);
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 24px 20px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease;
+}
+
+.time-block:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.time-value {
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.06em;
+}
+
+.time-label {
+  color: #b3c2dc;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.current-time {
+  margin: 0;
+  font-size: clamp(18px, 2vw, 24px);
+  color: #d9e6ff;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.current-time span {
+  color: #ffffff;
+  font-weight: 700;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 560px) {
+  .countdown-grid {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+
+  .app__title {
+    font-size: 38px;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .countdown-card {
+    padding: 24px;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
