@@ -1,5 +1,13 @@
+@font-face {
+  font-family: 'SweetWinter';
+  src: url('./assets/sweet-winter.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'SweetWinter';
   line-height: 1.5;
   font-weight: 400;
   color: #eaf1ff;
@@ -26,9 +34,8 @@ body {
   align-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(81, 101, 255, 0.08), transparent 28%),
-    linear-gradient(180deg, #09101f 0%, #0f1628 100%);
+  background: url(./assets/fon.jpg) no-repeat center center fixed;
+  background-size: cover;
 }
 
 a {
@@ -68,5 +75,28 @@ button:focus-visible {
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+@media (max-width: 1024px) {
+  body {
+    display: block;
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+    background-position: center top;
+    background-attachment: scroll;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    background-size: cover;
+    background-position: center top;
   }
 }

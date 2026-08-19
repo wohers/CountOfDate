@@ -88,8 +88,8 @@ function App() {
     <main className="app">
       <div className="app__content">
         <header className="app__header">
-          <h1 className="app__title">До нового года осталось!</h1>
-          <p className="app__subtitle">Обратный отсчёт точно до полуночи.</p>
+          <h1 className="app__title">There's no time left until the new year!</h1>
+          <p className="app__subtitle">Reverse countdown to midnight.</p>
         </header>
 
         <section className="countdown-card">
@@ -124,7 +124,7 @@ function App() {
           </div>
 
           <p className="current-time">
-            Текущее время: <span>{showTime}</span>
+            Current time: <span>{showTime}</span>
           </p>
         </section>
       </div>
