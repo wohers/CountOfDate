@@ -43,6 +43,51 @@
   backdrop-filter: blur(18px);
 }
 
+.date-picker {
+  display: grid;
+  gap: 10px;
+}
+
+.date-picker__label {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #091e3d;
+  font-weight: 700;
+}
+
+.date-picker__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.date-picker__input,
+.date-picker__button {
+  border: 1px solid rgba(9, 30, 61, 0.18);
+  border-radius: 14px;
+  padding: 12px 16px;
+  font: inherit;
+}
+
+.date-picker__input {
+  flex: 1 1 220px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #091e3d;
+}
+
+.date-picker__button {
+  background: #365c46;
+  color: #ffffff;
+  cursor: pointer;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.date-picker__button:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
 .countdown-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
