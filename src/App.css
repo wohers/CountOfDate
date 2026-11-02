@@ -17,20 +17,22 @@
 
 .app__title {
   margin: 0;
-  font-size: 32px;
+  font-size: 48px;
   letter-spacing: -0.04em;
-  color: #365c46;
+  color: #202422;
   text-shadow: 0 16px 35px rgba(1, 17, 41, 0.35);
   margin-bottom: 8px;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .app__subtitle {
   margin: 0;
   color: #091e3d;
-  font-size: 16px;
+  font-size: 24px;
   max-width: 540px;
   margin-left: auto;
   margin-right: auto;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .countdown-card {
@@ -49,11 +51,12 @@
 }
 
 .date-picker__label {
-  font-size: 14px;
+  font-size: 24px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #091e3d;
   font-weight: 700;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .date-picker__controls {
@@ -68,6 +71,7 @@
   border-radius: 14px;
   padding: 12px 16px;
   font: inherit;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .date-picker__input {
@@ -77,10 +81,12 @@
 }
 
 .date-picker__button {
-  background: #365c46;
+  background: #202422;
   color: #ffffff;
   cursor: pointer;
-  transition: opacity 180ms ease, transform 180ms ease;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
 }
 
 .date-picker__button:hover {
@@ -104,7 +110,9 @@
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 180ms ease, background-color 180ms ease;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease;
 }
 
 .time-block:hover {
@@ -128,9 +136,10 @@
 
 .current-time {
   margin: 0;
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(24px, 2vw, 28px);
   color: #03132c;
   text-align: center;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .current-time span {

@@ -156,19 +156,18 @@ function App() {
         <header className="app__header">
           <h1 className="app__title">
             {isFinished
-              ? "The selected date has arrived!"
-              : `Time left until ${format(targetDate, "dd MMMM yyyy", { locale: ru })}`}
+              ? "Эта дата прошла!"
+              : `Осталось до  ${format(targetDate, "dd MMMM yyyy", { locale: ru })}`}
           </h1>
           <p className="app__subtitle">
-            Countdown to the date you choose. By default it is set to the next New
-            Year.
+            Выберите дату, которую хотите. По умолчанию отчет идет до Нового Года
           </p>
         </header>
 
         <section className="countdown-card">
           <div className="date-picker">
             <label className="date-picker__label" htmlFor="target-date">
-              Choose a date
+              Выберите дату.
             </label>
             <div className="date-picker__controls">
               <input
@@ -183,7 +182,7 @@ function App() {
                 className="date-picker__button"
                 onClick={resetToNewYear}
               >
-                New Year
+                Выбрать
               </button>
             </div>
           </div>
@@ -219,7 +218,7 @@ function App() {
           </div>
 
           <p className="current-time">
-            Current time: <span>{showTime}</span>
+            Настоящие время: <span>{showTime}</span>
           </p>
         </section>
       </div>

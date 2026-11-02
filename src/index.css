@@ -1,13 +1,13 @@
 @font-face {
-  font-family: 'SweetWinter';
-  src: url('./assets/sweet-winter.ttf') format('truetype');
+  font-family: "SweetWinter";
+  src: url("./assets/sweet-winter.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  font-family: 'SweetWinter';
+  font-family: "SweetWinter";
   line-height: 1.5;
   font-weight: 400;
   color: #eaf1ff;
@@ -34,8 +34,30 @@ body {
   align-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background: url(./assets/fon.jpg) no-repeat center center fixed;
+  background: linear-gradient(
+    -45deg,
+    #ad7564,
+    #a1657b,
+    #5c96ac,
+    #6dafa0
+  );
   background-size: cover;
+  background-size: 400% 400%;
+  animation: gradient 45s ease infinite;
+}
+
+@keyframes gradient {
+ 
+ 0% {
+     background-position: 0% 50%;
+ }
+ 50% {
+     background-position: 100% 50%;
+ }
+ 
+ 100% {
+     background-position: 0% 50%;
+ }
 }
 
 a {
