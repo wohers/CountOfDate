@@ -1,74 +1,73 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
 # CountOfDate
+
+Приложение для работы с датами, созданное на **React + TypeScript + Vite**.
+
+## 📋 Описание
+
+CountOfDate — это веб-приложение на React с поддержкой TypeScript, собранное с помощью Vite. Проект использует современный стек инструментов для быстрой разработки с горячей заменой модулей (HMR) и строгой проверкой типов.
+
+## 🚀 Технологии
+
+- **React** — библиотека для построения пользовательских интерфейсов
+- **TypeScript** — типизированный JavaScript
+- **Vite** — быстрый сборщик и dev-сервер
+- **ESLint** — линтер для контроля качества кода
+
+## 📦 Установка и запуск
+
+### Предварительные требования
+
+- Node.js (рекомендуется версия 18+)
+- npm или yarn
+
+### Установка зависимостей
+
+```bash
+npm install
+```
+
+### Запуск в режиме разработки
+
+```bash
+npm run dev
+```
+
+Приложение будет доступно по адресу http://localhost:5173 (порт по умолчанию для Vite).
+
+### Сборка для production
+
+```bash
+npm run build
+```
+
+Собранные файлы будут находиться в директории build/.
+
+## 📁 Структура проекта
+
+CountOfDate/
+├── build/              # Собранные файлы (deploy)
+├── public/             # Статические ресурсы
+├── src/                # Исходный код приложения
+├── .gitignore          # Игнорируемые файлы Git
+├── eslint.config.js    # Конфигурация ESLint
+├── index.html          # Точка входа HTML
+├── package.json        # Зависимости и скрипты
+├── package-lock.json   # Зафиксированные версии зависимостей
+├── tsconfig.json       # Базовая конфигурация TypeScript
+├── tsconfig.app.json   # Конфигурация TS для приложения
+├── tsconfig.node.json  # Конфигурация TS для Node-инструментов
+└── vite.config.ts      # Конфигурация Vite
+
+## ⚙️ Конфигурация
+
+### Плагины Vite
+
+В проекте доступны два официальных плагина для React:
+
+- @vitejs/plugin-react — использует Babel (или oxc при работе с rolldown-vite) для Fast Refresh
+- @vitejs/plugin-react-swc — использует SWC для Fast Refresh
+
+
+## 🌐 Деплой
+
+Проект настроен для деплоя на GitHub Pages (используется ветка/директория gh-pages). Собранные файлы находятся в директории build/.
