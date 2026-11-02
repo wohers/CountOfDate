@@ -43,7 +43,7 @@ npm run build
 Собранные файлы будут находиться в директории build/.
 
 ## 📁 Структура проекта
-
+```
 CountOfDate/
 ├── build/              # Собранные файлы (deploy)
 ├── public/             # Статические ресурсы
@@ -57,7 +57,7 @@ CountOfDate/
 ├── tsconfig.app.json   # Конфигурация TS для приложения
 ├── tsconfig.node.json  # Конфигурация TS для Node-инструментов
 └── vite.config.ts      # Конфигурация Vite
-
+```
 ## ⚙️ Конфигурация
 
 ### Плагины Vite
