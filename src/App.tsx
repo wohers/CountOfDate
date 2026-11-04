@@ -33,7 +33,9 @@ const getStoredDateValue = () => {
 
 function App() {
   const [time, setTime] = useState(new Date());
-  const [targetDate, setTargetDate] = useState<Date>(() => getStoredDateValue());
+  const [targetDate, setTargetDate] = useState<Date>(() =>
+    getStoredDateValue(),
+  );
   const [inputValue, setInputValue] = useState(() =>
     formatDateInputValue(new Date(targetDate)),
   );
@@ -42,6 +44,10 @@ function App() {
     hours: 0,
     minutes: 0,
     seconds: 0,
+  });
+  const [bgUrl, setbgUrl] = useState(() => {
+    const savedBg = localStorage.getItem("bgUrlStorage");
+  return savedBg ? savedBg : '';
   });
 
   const getDayWord = (days: number) => {
@@ -150,6 +156,55 @@ function App() {
   const showTime = format(time, "HH:mm:ss", { locale: ru });
   const isFinished = targetDate.getTime() <= time.getTime();
 
+  const selectBackground = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setbgUrl(base64String);
+        localStorage.setItem("bgUrlStorage", base64String);
+      };
+      reader.readAsDataURL(file);
+    }
+    console.log(file);
+  };
+
+  const resetBackground = () => {
+    localStorage.removeItem('bgUrlStorage')
+    setbgUrl('')
+  }
+
+
+  useEffect(() => {
+    const body = document.body;
+
+    body.style.backgroundSize = "cover";
+    body.style.backgroundPosition = "center";
+    body.style.backgroundRepeat = "no-repeat";
+    body.style.backgroundAttachment = "fixed";
+
+    body.style.transition =
+      "background-image 0.5s ease-in-out, background 0.5s ease-in-out";
+
+    if (bgUrl) {
+      body.style.backgroundImage = `url(${bgUrl})`;
+      body.style.background = `url(${bgUrl}) center/cover no-repeat fixed`;
+    } else {
+      body.style.backgroundImage = "none";
+      body.style.background =
+        "linear-gradient(-45deg, #ad7564, #a1657b, #5c96ac, #6dafa0)";
+    }
+
+    return () => {
+      body.style.background = "";
+      body.style.backgroundImage = "";
+      if (bgUrl) {
+        URL.revokeObjectURL(bgUrl);
+      }
+    };
+  }, [bgUrl]);
+
   return (
     <main className="app">
       <div className="app__content">
@@ -160,7 +215,8 @@ function App() {
               : `Осталось до  ${format(targetDate, "dd MMMM yyyy", { locale: ru })}`}
           </h1>
           <p className="app__subtitle">
-            Выберите дату, которую хотите. По умолчанию отчет идет до Нового Года
+            Выберите дату, которую хотите. По умолчанию отчет идет до Нового
+            Года
           </p>
         </header>
 
@@ -182,9 +238,22 @@ function App() {
                 className="date-picker__button"
                 onClick={resetToNewYear}
               >
-                Выбрать
+                Новый Год
               </button>
             </div>
+          </div>
+          <div className="background_picker">
+            <label className="custom-file-upload">
+              <input
+                type="file"
+                accept="image/*"
+                className="background_picker_btn"
+                style={{ display: "none" }}
+                onChange={selectBackground}
+              />
+              Выбрать фон
+            </label>
+            <button className="reset_bg_btn" onClick={resetBackground}>Сбросить фон</button>
           </div>
 
           <div className="countdown-grid">

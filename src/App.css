@@ -50,6 +50,40 @@
   gap: 10px;
 }
 
+.background_picker {
+  display: flex;
+  gap: 10px;
+}
+.reset_bg_btn {
+  width: 30%;
+  font-family: "Courier New", Courier, monospace;
+  background: rgb(110, 46, 46);
+  font-size: 14px;
+}
+
+.custom-file-upload {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  width: 70%;
+  background: #202422;
+  color: #ffffff;
+  border-radius: 12px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.custom-file-upload:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
 .date-picker__label {
   font-size: 24px;
   letter-spacing: 0.08em;
@@ -139,7 +173,7 @@
   font-size: clamp(24px, 2vw, 28px);
   color: #03132c;
   text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .current-time span {
@@ -357,5 +391,17 @@
 
   .current-time {
     font-size: 12px;
+  }
+  .background_picker {
+    flex-wrap: wrap;
+  }
+  .reset_bg_btn {
+    width: 100%;
+  }
+  .custom-file-upload {
+    width: 100%;
+  }
+  .date-picker__button {
+    width: 100%;
   }
 }
